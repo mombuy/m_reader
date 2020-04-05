@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     }
     const users = await mysql.find_all();
 
-    res.end(res.render("responsePayload", await { users }));
+    res.end(res.render("responsePayload", await { users, cookies_data }));
 });
 
 router.post("/modify", async (req: express.Request, res: express.Response) => {
@@ -34,7 +34,7 @@ router.post("/modify", async (req: express.Request, res: express.Response) => {
     } else {
         mysql.make_admin(req.body.user);
     }
-    res.redirect(307, await "/users");
+    res.redirect(307, await "/m/");
 });
 
 export default router;

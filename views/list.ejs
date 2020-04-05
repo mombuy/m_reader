@@ -25,7 +25,7 @@
     <div class="main_row">
         <% for(let i = 0; i < list.length; i++) { %> <% let path = "https://res.cloudinary.com/picturesapplecustard/image/upload/v1586026604/" + list[i].MANGA_NAME + "/view/1.jpg" %>
         <div class="elemant">
-            <a href="/v/<%=list[i].MANGA_NAME %>">
+            <a href="/v/<%=list[i].ID %>">
                 <div>
                     <img src="<%= path %>" alt="" /> <br />
                     <%=list[i].MANGA_NAME %>

@@ -1,58 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            background-color: rgb(0, 0, 0);
-        }
-        .MODIFY_FORMS {
-            display: flex;
-            flex-wrap: wrap;
-            word-wrap: break-word;
-            border: 1px solid white;
-            color: white;
-            width: auto;
-            margin: 0 auto;
-            margin-top: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-        .MODIFY_FORMS input {
-            padding: 5px;
-            margin: 5px;
-            margin-top: 10px;
-            width: 200px;
-        }
-        .MODIFY_FORMS p {
-            font-size: 1em;
-            word-wrap: break-word;
-            margin-right: 100px;
-        }
-        .USER {
-            display: none;
-        }
-    </style>
-    <body>
-        <% for(let i = 0; i < users.length; i++) { %>
-        <div class="MODIFY_FORMS">
-            <p><%= JSON.stringify(users[i]) %></p>
-            <form action="/users/modify" method="post">
-                <input type="text" name="user" class="USER" value="<%= users[i].ID %>" />
-                <% if(users[i].PRIVILEGE !== "admin") { %>
-                <input type="submit" name="make_D" value="DELETE" />
-                <input type="submit" name="make_A" value="MAKE ADMIN" />
-                <% } %>
-            </form>
-        </div>
-        <% } %>
-        <script></script>
-    </body>
-</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background-color: rgb(0, 0, 0);
+    }
+    .MODIFY_FORMS {
+        display: flex;
+        flex-wrap: wrap;
+        word-wrap: break-word;
+        border: 1px solid white;
+        color: white;
+        width: auto;
+        margin: 0 auto;
+        margin-top: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+    .MODIFY_FORMS input {
+        padding: 5px;
+        margin: 5px;
+        margin-top: 10px;
+        width: 200px;
+    }
+    .MODIFY_FORMS p {
+        font-size: 1em;
+        word-wrap: break-word;
+        margin-right: 100px;
+    }
+    .USER {
+        display: none;
+    }
+</style>
+<body>
+    <%- include("navbar") -%> <% for(let i = 0; i < users.length; i++) { %>
+    <div class="MODIFY_FORMS">
+        <p><%= JSON.stringify(users[i]) %></p>
+        <form action="/m/modify" method="post">
+            <input type="text" name="user" class="USER" value="<%= users[i].ID %>" />
+            <% if(users[i].PRIVILEGE !== "admin") { %>
+            <input type="submit" name="make_D" value="DELETE" />
+            <input type="submit" name="make_A" value="MAKE ADMIN" />
+            <% } %>
+        </form>
+    </div>
+    <% } %>
+    <script></script>
+</body>

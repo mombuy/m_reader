@@ -130,7 +130,18 @@ export class Mysql {
             });
         return search_result;
     }
-    async get_pages() {}
+    async join_tables(ID: number) {
+        let search_result;
+        await this.knex("MANGA")
+            .distinct("*")
+            .innerJoin("MANGA_DETAIL")
+            .where("MANGA_DETAIL.ID", "=", ID)
+            .andWhere("MANGA.ID", "=", ID)
+            .then((result) => {
+                search_result = result;
+            });
+        return search_result;
+    }
     async find_manga_all() {
         let search_result;
         await this.knex("MANGA")
