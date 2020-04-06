@@ -30,11 +30,11 @@ router.use(async (req: express.Request, res: express.Response, next: express.Nex
     next();
 });
 
-router.get("/", (req: express.Request, res: express.Response, next: express.NextFunction) => {
+router.post("/", (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (cookies_data.cookies_privilege !== "admin") {
         return res.redirect("/");
     }
-    res.render("upload");
+    res.render("upload", { cookies_data });
 });
 
 router.post("/upload", upload.array("image", 100), async (req: any, res: express.Response) => {

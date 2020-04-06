@@ -2,61 +2,44 @@ const login_btn = document.querySelector(".login_btn");
 const login_menu = document.querySelector(".login_menu");
 const registration_btn = document.querySelector(".registration_btn");
 const registration_menu = document.querySelector(".registration_menu");
-const invisible_menu = document.querySelector(".invisible_menu");
+const dark_background = document.querySelector(".dark_background");
+const dark_background2 = document.querySelector(".dark_background2");
 const body = document.querySelector("body");
-const menu = document.querySelector(".sign_menu");
-const show_menu_btn = document.querySelector(".slide_btn");
+const main_menu = document.querySelector(".main_menu");
+const nerv = document.querySelector(".nerv");
 const hidden_menu = document.querySelector(".hidden_menu ");
+const navbar = document.querySelector(".navbar");
 
 window.addEventListener("click", (e) => {
-    if (e.target === show_menu_btn) {
-        if (menu.style.opacity === "1") {
-            to_close(menu);
-            close_all();
-            close_invis();
-        } else {
-            login_menu.style.zIndex = "1000";
-            registration_menu.style.zIndex = "1000";
-            show_menu(menu);
-        }
-    } else if (e.target === login_btn) {
-        to_close(registration_menu);
-        show_menu(login_menu);
+    if (e.target === login_btn) {
+        open_menu(login_menu, registration_menu);
     } else if (e.target === registration_btn) {
-        to_close(login_menu);
-        show_menu(registration_menu);
-    } else if (e.target === menu) {
+        open_menu(registration_menu, login_menu);
+    } else if (e.target === dark_background) {
         close_all();
     }
 });
 
-const to_close = (menu) => {
-    menu.style.opacity = "0";
-    menu.style.zIndex = "999";
-};
-
-const show_menu = (menu) => {
-    invis_on();
-    menu.style.opacity = "1";
-    menu.style.zIndex = "1000";
-    menu.style.transform = "translateY(-2%)";
-};
-
-const invis_on = () => {
-    invisible_menu.style.opacity = "1";
-    invisible_menu.style.zIndex = "1000";
-};
-
-const close_invis = () => {
-    invisible_menu.style.opacity = "0";
-    invisible_menu.style.zIndex = "-1000";
+const open_menu = (open, close) => {
+    navbar.style.zIndex = "10";
+    dark_background.style.opacity = "1";
+    dark_background.style.zIndex = "1";
+    open.style.opacity = "1";
+    open.style.zIndex = "1000";
+    open.style.transform = "translateY(-100px)";
+    close.style.opacity = "0";
+    close.style.zIndex = "-100";
+    close.style.transform = "translateY(0px)";
 };
 
 const close_all = () => {
+    navbar.style.zIndex = "0";
+    dark_background.style.opacity = "0";
+    dark_background.style.zIndex = "-1000";
     registration_menu.style.opacity = "0";
-    registration_menu.style.transform = "translateY(10%)";
     registration_menu.style.zIndex = "-1000";
+    login_menu.style.transform = "translateY(0px)";
     login_menu.style.opacity = "0";
-    login_menu.style.transform = "translateY(10%)";
     login_menu.style.zIndex = "-1000";
+    registration_menu.style.transform = "translateY(0px)";
 };

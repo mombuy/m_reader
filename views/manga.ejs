@@ -1,7 +1,10 @@
 <body>
     <style>
         img {
-            width: 500px;
+            width: 30%;
+        }
+        .main_row {
+            text-align: center;
         }
     </style>
     <%- include("navbar") -%>
@@ -9,8 +12,7 @@
         <% for(let i = 0; i < manga[0].PAGE_QUANTITY; i++) { %> <% let path = "https://res.cloudinary.com/picturesapplecustard/image/upload/v1586026604/" + manga[0].MANGA_NAME + "/view/" + (i + 1) + ".jpg" %>
         <div class="elemant">
             <div>
-                <img src="<%= path %>" alt="" /> <br />
-                <%=manga[0].MANGA_NAME %>
+                <img src="<%= path %>" alt="" />
             </div>
         </div>
         <% } %>

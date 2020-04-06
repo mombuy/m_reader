@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     }
     const users = await mysql.find_all();
 
-    res.end(res.render("responsePayload", await { users, cookies_data }));
+    res.end(res.render("modify", await { users, cookies_data }));
 });
 
 router.post("/modify", async (req: express.Request, res: express.Response) => {

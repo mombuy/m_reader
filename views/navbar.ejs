@@ -7,17 +7,18 @@
         <link rel="stylesheet" href="/stylesheets/navbar.css" />
         <link rel="shortcut icon" href="/images/icons8-admission-48.png" type="image/png" />
         <link rel="stylesheet" href="/stylesheets/ripple_btn.css" />
+        <title>Manga reader</title>
     </head>
     <body>
-        <div class="invisible_menu"></div>
         <div class="navbar">
+            <a href="/" class="logo" style="font-size: 25px;">MAIN MENU</a>
             <% if(cookies_data.cookies_have) { %>
             <div class="profile">
-                <% if(cookies_data.cookies_privilege) {%>
+                <% if(cookies_data.cookies_privilege === "admin") {%>
                 <form action="/m/" method="post">
                     <input type="submit" value="USER LIST" />
                 </form>
-                <form action="/a/" method="get">
+                <form action="/a/" method="post">
                     <input type="submit" value="ADD CONTENT" />
                 </form>
                 <% } %>
@@ -26,13 +27,9 @@
                 </form>
             </div>
             <% } else { %>
-            <div class="sign_menu">
-                <div class="items">
-                    <button class="ripple-btn login_btn z">Sign in</button>
-                    <button class="ripple-btn registration_btn z">Sign up</button>
-                </div>
-            </div>
-            <button class="ripple-btn slide_btn"></button>
+            <button class="ripple-btn registration_btn nerv">Sign up</button>
+            <button class="ripple-btn login_btn nerv">Sign in</button>
+
             <div class="registration_menu hidden_menu">
                 <form name="reg-form">
                     <input type="text" name="name" id="name_id" class="text_input" autocomplete="off" placeholder="User name" required /> <br />
@@ -51,9 +48,11 @@
                     <input type="submit" value="login" id="sign_in_submit" onclick="lockout_submit(this)" />
                 </form>
             </div>
-            <!-- action="req-page-progress" method="post" -->
+
             <% } %>
         </div>
+        <div class="dark_background"></div>
+        <div class="test"></div>
         <script src="/js/registration.js"></script>
         <script src="/js/menus.js"></script>
         <script src="/js/ripple.js"></script>

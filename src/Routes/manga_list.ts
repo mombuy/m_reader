@@ -22,6 +22,6 @@ router.get("/:id", async (req: express.Request, res: express.Response, next: exp
 
 router.get("/", async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const list = await mysql.find_manga_all();
-    res.render("list", { cookies_data, list });
+    res.render("list", { list, cookies_data });
 });
 export default router;
