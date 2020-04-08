@@ -32,7 +32,7 @@ router.post("/modify", async (req: express.Request, res: express.Response) => {
     if (req.body.make_D !== undefined) {
         mysql.delete_one(req.body.user);
     } else {
-        mysql.make_admin(req.body.user);
+        mysql.premium(req.body.user);
     }
     res.redirect(307, await "/m/");
 });

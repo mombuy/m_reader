@@ -25,21 +25,21 @@ const open_menu = (open, close) => {
     dark_background.style.opacity = "1";
     dark_background.style.zIndex = "1";
     open.style.opacity = "1";
-    open.style.zIndex = "1000";
+    open.style.zIndex = "10";
     open.style.transform = "translateY(-100px)";
     close.style.opacity = "0";
-    close.style.zIndex = "-100";
+    close.style.zIndex = "-1";
     close.style.transform = "translateY(0px)";
 };
 
 const close_all = () => {
     navbar.style.zIndex = "0";
     dark_background.style.opacity = "0";
-    dark_background.style.zIndex = "-1000";
+    dark_background.style.zIndex = "-1";
     registration_menu.style.opacity = "0";
-    registration_menu.style.zIndex = "-1000";
+    registration_menu.style.zIndex = "-1";
     login_menu.style.transform = "translateY(0px)";
     login_menu.style.opacity = "0";
-    login_menu.style.zIndex = "-1000";
+    login_menu.style.zIndex = "-1";
     registration_menu.style.transform = "translateY(0px)";
 };

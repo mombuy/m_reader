@@ -1,14 +1,19 @@
 <body>
     <style>
+        body {
+            z-index: 10;
+        }
         .main_row {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 20px;
         }
         img {
             width: 300px;
             margin-bottom: 10px;
         }
-        .elemant div {
+        .element div {
             width: 300px;
             text-align: center;
             padding: 10px;
@@ -19,12 +24,15 @@
             margin-right: 10px;
             float: right;
         }
+        .element div:hover {
+            background-color: white;
+        }
     </style>
 
     <%- include("navbar") -%>
     <div class="main_row">
         <% for(let i = 0; i < list.length; i++) { %> <% let path = "https://res.cloudinary.com/picturesapplecustard/image/upload/v1586026604/" + list[i].MANGA_NAME + "/view/1.jpg" %>
-        <div class="elemant">
+        <div class="element">
             <a href="/v/<%=list[i].ID %>">
                 <div>
                     <img src="<%= path %>" alt="" /> <br />

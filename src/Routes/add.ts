@@ -27,13 +27,13 @@ let cookies_data;
 
 router.use(async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     cookies_data = new Cookies(req, res).verify();
+    if (cookies_data.cookies_privilege !== "admin") {
+        return res.redirect("/");
+    }
     next();
 });
 
 router.post("/", (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    if (cookies_data.cookies_privilege !== "admin") {
-        return res.redirect("/");
-    }
     res.render("upload", { cookies_data });
 });
 

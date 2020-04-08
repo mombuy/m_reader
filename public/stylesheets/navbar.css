@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 2vmin;
     align-self: baseline;
     text-shadow: 0 0 2px #e19a86, 0 0 1.5px #854535, 0 0 1.5px #5c150c;
     font-family: serif;
@@ -13,10 +13,10 @@ body {
 
 .logo {
     padding: 12px;
-    top: 7px;
-    padding-top: 6px;
+    padding-top: 5px;
     padding-bottom: 6px;
     position: relative;
+    top: -13px;
     align-self: baseline;
     font-family: serif;
     border: 1px solid rgba(161, 161, 161, 0.6);
@@ -27,11 +27,10 @@ body {
     width: 100%;
     height: 40px;
     border-bottom: 1px solid rgba(161, 161, 161, 0.6);
-    position: fixed;
-    top: 0;
     background-color: black;
-    z-index: 0;
-    margin-bottom: 200px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .nerv {
@@ -41,15 +40,13 @@ body {
     font-family: serif;
     line-height: 1.2em;
     letter-spacing: -0.03em;
-    position: relative;
-    right: 0;
-    top: 0px;
     width: 140px;
     text-shadow: 0 0 2px #e19a86, 0 0 1.5px #ffffff, 0 0 1.5px #5c150c;
     border: 1px solid rgba(255, 255, 255, 0.6);
-    float: right;
+    position: relative;
     padding: 4px;
     padding-bottom: 5px;
+    float: right;
 }
 .nerv:hover,
 .profile input:hover {
@@ -68,7 +65,7 @@ body {
     transition: 0.2s;
     position: fixed;
     opacity: 0;
-    z-index: -1000;
+    z-index: -1;
     left: -50px;
     right: 0;
     top: 300px;
@@ -83,16 +80,11 @@ body {
 .dark_background {
     top: 0;
     width: 100%;
-    height: 100%;
     position: fixed;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    z-index: -1000;
+    z-index: -1;
     opacity: 0;
-    transition: 0.2s;
-}
-
-.test {
-    height: 50px;
 }
 
 .profile {
@@ -127,4 +119,11 @@ body {
     color: white;
     text-transform: lowercase;
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@media only screen and (max-width: 1000px) {
+    .navbar .nerv,
+    .logo {
+        width: auto;
+    }
 }

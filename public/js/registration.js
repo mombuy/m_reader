@@ -15,7 +15,14 @@ document.getElementById("submit").addEventListener("click", (e) => {
     request.setRequestHeader("Content-Type", "application/json");
     request.addEventListener("load", async () => {
         const received_user = JSON.parse(request.response);
-        alert(received_user);
+        if (received_user) {
+            user = {
+                name: name,
+                password: password,
+                email: email,
+            };
+            is_empty(user);
+        }
     });
     request.send(user);
 });
@@ -44,12 +51,12 @@ document.getElementById("sign_in_submit").addEventListener("click", (e) => {
     request.send(user);
 });
 
-function error(label, input) {
+const error = (label, input) => {
     label.style.color = "red";
     input.style.borderColor = "red";
-}
+};
 
-function lockout_submit(button) {
+const lockout_submit = (button) => {
     let old_value = button.value;
 
     button.setAttribute("disabled", true);
@@ -59,4 +66,26 @@ function lockout_submit(button) {
         button.value = old_value;
         button.removeAttribute("disabled");
     }, 3000);
-}
+};
+
+const is_empty = (reg_user) => {
+    for (let i in reg_user) {
+        if (reg_user[i] === "") {
+            alert(i + " is empty");
+        } else {
+            verify(i, reg_user[i]);
+        }
+    }
+};
+
+const verify = (i, reg_user) => {
+    if (i === "name" && reg_user.length < 4) {
+        alert("name < 4");
+    }
+    if (i === "password" && reg_user.length < 8) {
+        alert("password < 8");
+    }
+    if (i === "email" && reg_user.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi) === null) {
+        alert("email + @email.domain");
+    }
+};

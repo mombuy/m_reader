@@ -101,8 +101,8 @@ export class Mysql {
     async delete_one(ID: number) {
         await this.knex("USER").select("*").where("ID", ID).del();
     }
-    async make_admin(ID: number) {
-        await this.knex("USER").select("*").where("ID", ID).update({ PRIVILEGE: "vip" });
+    async premium(ID: number) {
+        await this.knex("USER").select("*").where("ID", ID).update({ PRIVILEGE: "premium" });
     }
     async save_manga(name: string, preview: string, desc: string, length: number) {
         const M = [
