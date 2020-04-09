@@ -1,3 +1,5 @@
+let boo = false;
+
 document.getElementById("submit").addEventListener("click", (e) => {
     e.preventDefault();
     let registration = document.forms["reg-form"];
@@ -22,6 +24,11 @@ document.getElementById("submit").addEventListener("click", (e) => {
                 email: email,
             };
             is_empty(user);
+            if (!boo) {
+                alert("user exist");
+            }
+        } else {
+            window.location.href = window.location.href;
         }
     });
     request.send(user);
@@ -71,6 +78,7 @@ const lockout_submit = (button) => {
 const is_empty = (reg_user) => {
     for (let i in reg_user) {
         if (reg_user[i] === "") {
+            boo = true;
             alert(i + " is empty");
         } else {
             verify(i, reg_user[i]);
@@ -79,13 +87,25 @@ const is_empty = (reg_user) => {
 };
 
 const verify = (i, reg_user) => {
-    if (i === "name" && reg_user.length < 4) {
-        alert("name < 4");
+    switch (i) {
+        case "name":
+            if (reg_user.length < 4) {
+                alert("name < 4");
+                boo = true;
+            }
+            break;
+        case "password":
+            if (reg_user.length < 8) {
+                alert("password < 8");
+                boo = true;
+            }
+            break;
+        case "email":
+            if (reg_user.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi) === null) {
+                alert("email + @email.domain");
+                boo = true;
+            }
+            break;
     }
-    if (i === "password" && reg_user.length < 8) {
-        alert("password < 8");
-    }
-    if (i === "email" && reg_user.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi) === null) {
-        alert("email + @email.domain");
-    }
+    return boo;
 };
