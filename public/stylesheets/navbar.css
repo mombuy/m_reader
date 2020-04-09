@@ -120,8 +120,9 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
-    .navbar .nerv,
-    .logo {
+    .navbar .nerv {
         width: auto;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 }
