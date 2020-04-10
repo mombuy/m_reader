@@ -1,6 +1,8 @@
 # manga_reader
 
->TO RUN
+>USAGE
 
-npm i
+npm i 
+
+
 npm run dev
