@@ -2,6 +2,7 @@ import express = require("express");
 import multer = require("multer");
 import path = require("path");
 import Datauri = require("datauri");
+import progress = require("progress-stream");
 
 import { Mysql } from "../Mysql/mysql";
 import { Cookies } from "./verify_cookies";
@@ -42,9 +43,18 @@ router.post("/upload", upload.array("image", 100), async (req: any, res: express
     const files = req.files;
     for (let i = 0; i < files.length; i++) {
         dataUri = (req) => dUri.format(path.extname(req.files[i].originalname).toString(), req.files[i].buffer);
+        const p = progress({
+            length: dataUri,
+            time: 1000,
+        });
+        req.pipe(p);
+        p.headers = req.headers;
+        p.on("progress", (progress) => {
+            console.log(Math.round(progress.percentage) + "%");
+        });
         await cloudinary.v2.uploader.upload(dataUri(req).content, { public_id: req.body.name + "/" + "view" + "/" + (i + 1) }, (error) => {
             if (error) {
-                console.log(error);
+                res.send(error);
             }
         });
     }
@@ -55,6 +65,7 @@ router.post("/upload", upload.array("image", 100), async (req: any, res: express
         desc = "no description";
     }
     mysql.save_manga(name, preview, desc, req.files.length);
+    res.redirect(await "/v/");
 });
 
 export default router;
