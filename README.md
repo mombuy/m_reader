@@ -1,8 +1,11 @@
-# manga_reader
+# Reader
+  Manga reader
+  
+# Tools
+  Node.js server using Exress framework
 
->USAGE
+# Usage
 
-npm i 
-
+npm i
 
 npm run dev
