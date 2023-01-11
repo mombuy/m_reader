@@ -33,7 +33,7 @@
         "express": "^4.17.1",
         "express-fileupload": "^1.1.7-alpha.1",
         "gridfs-stream": "^1.1.1",
-        "knex": "^0.20.13",
+        "knex": "^2.4.0",
         "method-override": "^3.0.0",
         "mongoose": "^5.9.6",
         "mssql": "^6.2.0",
